@@ -1,6 +1,7 @@
 import com.av.beans.ComplexBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -14,11 +15,14 @@ public class TestConstrInjection {
     @Test
     public  void  testInjectBean() {
 
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config-example.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config-example.xml");
+
         ComplexBean complexBean = ctx.getBean("complexBean" , ComplexBean.class);
         complexBean.testInjectfromConstructorBean();
         complexBean.testInjectfromSetterBean();
         complexBean.testInjectList();
+        ctx.registerShutdownHook();
+       //  ctx.close();
     }
 
 }

@@ -2,17 +2,19 @@ package com.av.beans;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Required;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 
 
 /**
  * Created by alexey on 03.02.17.
  */
-public class ComplexBean implements InitializingBean {
+public class ComplexBean implements InitializingBean  , DisposableBean{
 
     private Logger logger = LoggerFactory.getLogger(ComplexBean.class);
 
@@ -76,6 +78,15 @@ public class ComplexBean implements InitializingBean {
     }
 
 
+    public void destroy() throws Exception {
+        logger.info("destroy() from iface method called");
+    }
 
-
+    public void destroyMethod() throws Exception {
+        logger.info("destroyMethod()   method called");
+    }
+    @PreDestroy
+    public void preDestroyMethod() throws Exception {
+        logger.info("preDestroyMethod()   method called");
+    }
 }

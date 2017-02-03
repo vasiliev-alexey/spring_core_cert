@@ -23,7 +23,7 @@
         <ref bean="simpleBean2"></ref>
     </util:list>
 
-    <bean id="complexBean" class="com.av.beans.ComplexBean" init-method="initMethod" c:_0-ref="simpleBean"
+    <bean id="complexBean" class="com.av.beans.ComplexBean" init-method="initMethod" destroy-method="destroyMethod" c:_0-ref="simpleBean"
           p:simpleBeanProperty-ref="simpleBean2">
         <property name="simpleBeanList" ref="simpleBeanList"></property>
 
