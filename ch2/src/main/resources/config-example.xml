@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean id="simpleBean" class="com.av.beans.SimpleBeanImpl">
+        <property name="message" value="testDataOne"></property>
+    </bean>
+    <bean id="simpleBean2" class="com.av.beans.SimpleBeanImpl">
+        <property name="message" value="testDataTwo"></property>
+    </bean>
+
+
+    <util:list id="simpleBeanList">
+        <ref bean="simpleBean"></ref>
+        <ref bean="simpleBean2"></ref>
+    </util:list>
+
+    <bean id="complexBean" class="com.av.beans.ComplexBean" init-method="initMethod" c:_0-ref="simpleBean"
+          p:simpleBeanProperty-ref="simpleBean2">
+        <property name="simpleBeanList" ref="simpleBeanList"></property>
+
+        <!--constructor-arg index="0" ref="simpleBean"></constructor-arg-->
+        <!--property name="simpleBeanProperty" ref="simpleBean2"></property-->
+    </bean>
+
+    <!--bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean-->
+
+    <context:annotation-config></context:annotation-config>
+
+</beans>
