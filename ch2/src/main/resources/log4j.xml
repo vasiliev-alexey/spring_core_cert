@@ -12,7 +12,7 @@
 
 
     <logger name="org.springframework">
-        <level value="off"/>
+        <level value="on"/>
     </logger>
     <logger name="org.hibernate">
         <level value="off"/>
