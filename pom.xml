@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ch2</module>
+        <module>ch3-testing</module>
     </modules>
 
 
